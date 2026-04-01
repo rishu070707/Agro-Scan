@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #fafdf5;
+    --on-background: #0b0f0b;
+    --surface: #fafdf5;
+    --on-surface: #0b0f0b;
+    --surface-variant: #e1e4de;
+    --on-surface-variant: #434842;
+    --primary: #006e2f;
+    --on-primary: #ffffff;
+    --primary-container: #83fda4;
+    --on-primary-container: #00210a;
+    --surface-container-low: #f4f7ef;
+    --surface-container: #eef2e9;
+    --surface-container-high: #e8ece3;
+    --surface-container-highest: #e2e6dd;
+    --surface-container-lowest: #ffffff;
+    --outline: #737770;
+    --outline-variant: #c3c8bd;
+    --error: #ba1a1a;
+    --surface-bright: #fafdf5;
+    --surface-dim: #d9e6d4;
+    --surface-tint: #006e2f;
+    --primary-fixed-dim: #5bf083;
+    --primary-dim: #006e2f;
+    --secondary-dim: #495547;
+  }
+
+  .dark {
+    --background: #0b0f0b;
+    --on-background: #fafdf5;
+    --surface: #0b0f0b;
+    --on-surface: #fafdf5;
+    --surface-variant: #222721;
+    --on-surface-variant: #a8aca5;
+    --primary: #6bff8f;
+    --on-primary: #005f28;
+    --primary-container: #0abc56;
+    --on-primary-container: #002c0f;
+    --surface-container-lowest: #000000;
+    --surface-container-low: #101410;
+    --surface-container: #161b16;
+    --surface-container-high: #1c211b;
+    --surface-container-highest: #222721;
+    --outline: #737770;
+    --outline-variant: #454944;
+    --error: #ff7351;
+    --surface-bright: #282e27;
+    --surface-dim: #0b0f0b;
+    --surface-tint: #6bff8f;
+    --primary-fixed-dim: #5bf083;
+    --primary-dim: #5bf083;
+    --secondary-dim: #cbd8c6;
+  }
+}
+
+body {
+  @apply bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary-container overflow-x-hidden transition-colors duration-300;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.scan-line {
+  background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+
+.grid-bg {
+  background-image: radial-gradient(circle at 1px 1px, var(--surface-container-highest) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.tonal-shift {
+  background: linear-gradient(180deg, var(--background) 0%, var(--surface-container-low) 100%);
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.scan-beam {
+  position: absolute; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  box-shadow: 0 0 20px var(--primary);
+  animation: scanBeam 2.5s ease-in-out infinite;
+  top: 10%;
+}
+
+@keyframes scanBeam {
+  0%   { top: 5%;  opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 95%; opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
