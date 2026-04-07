@@ -12,9 +12,6 @@ export default function CTA() {
           Join 15,000+ precision farmers globally using AGRO to secure their yield and optimize their resources.
         </p>
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-          <a href="/signup" className="bg-gradient-to-br from-primary to-primary-container text-on-primary-container px-12 py-6 rounded-md font-black text-xl uppercase tracking-tight hover:shadow-[0_0_40px_rgba(var(--primary),0.5)] transition-all">
-            Start Free Scan
-          </a>
           <button className="text-on-surface font-bold text-lg uppercase tracking-widest border-b-2 border-primary/30 hover:border-primary transition-colors pb-1">
             Request Enterprise Demo
           </button>
