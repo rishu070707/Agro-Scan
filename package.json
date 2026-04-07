@@ -14,7 +14,10 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
     "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.0"
+    "tailwind-merge": "^2.2.0",
+    "@tensorflow/tfjs": "^4.11.0",
+    "@tensorflow-models/coco-ssd": "^2.2.3",
+    "@tensorflow-models/mobilenet": "^2.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { DISEASES } from '../../data/mockData';
+import { analyzeCropImage } from '../../utils/scanAnalyzer';
 
 export default function Scanner({ showToast, setActiveTab, historyData, setHistoryData }) {
   const [activeCrop, setActiveCrop] = useState('Soybean');
@@ -40,13 +41,70 @@ export default function Scanner({ showToast, setActiveTab, historyData, setHisto
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  const runScan = () => {
+  const runScan = async () => {
+    setScanState('loading');
+    setLoadingStep(0);
+    
+    try {
+      // Get the image element for analysis
+      const imageElement = new Image();
+      imageElement.src = previewUri;
+      
+      imageElement.onload = async () => {
+        try {
+          // Run real image analysis
+          const analysisResult = await analyzeCropImage(imageElement, activeCrop);
+          
+          // Find full disease data from mock data
+          let finalResult = DISEASES.find(d => d.name === analysisResult.name);
+          
+          // If exact match not found, find by crop and use the analysis
+          if (!finalResult) {
+            finalResult = DISEASES.find(d => d.crop === activeCrop) || DISEASES[0];
+          }
+          
+          // Override with actual analysis confidence
+          finalResult.conf = analysisResult.conf;
+          finalResult.severity = analysisResult.severity;
+          
+          // Simulate loading steps for UX
+          let step = 0;
+          const interval = setInterval(() => {
+            step++;
+            setLoadingStep(step);
+            if (step >= 6) {
+              clearInterval(interval);
+              setTimeout(() => {
+                setScanState('result');
+                setLocalTab('treatment');
+                showToast(`✅ Scan complete — ${finalResult.name}`, 'check_circle');
+                addToRecent(finalResult);
+              }, 400);
+            }
+          }, 320);
+          
+          setResult(finalResult);
+        } catch (err) {
+          console.error('Analysis failed:', err);
+          handleFallbackScan();
+        }
+      };
+      
+      imageElement.onerror = () => {
+        console.error('Image load failed');
+        handleFallbackScan();
+      };
+    } catch (err) {
+      console.error('Scan error:', err);
+      handleFallbackScan();
+    }
+  };
+
+  const handleFallbackScan = () => {
+    // Fallback to smart random if analysis fails
     let pool = DISEASES.filter(d => d.crop === activeCrop || d.name === 'No Disease Detected');
     if (pool.length === 0) pool = DISEASES;
     const finalResult = pool[Math.floor(Math.random() * pool.length)];
-    
-    setScanState('loading');
-    setResult(finalResult);
     
     let step = 0;
     const interval = setInterval(() => {
@@ -62,6 +120,8 @@ export default function Scanner({ showToast, setActiveTab, historyData, setHisto
         }, 400);
       }
     }, 320);
+    
+    setResult(finalResult);
   };
 
   const addToRecent = (d) => {

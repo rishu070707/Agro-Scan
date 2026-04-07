@@ -12,7 +12,7 @@ export default function Login({ isDarkMode, toggleTheme }) {
     e.preventDefault();
     setError('');
 
-    if (email === 'AgroScan123@gmail.com' && password === '1234567') {
+    if (email === 'Agro123@gmail.com' && password === '123456789') {
       // Mock successful login
       navigate('/dashboard');
     } else {
@@ -148,12 +148,6 @@ export default function Login({ isDarkMode, toggleTheme }) {
                   </button>
                 </form>
                 
-                <div className="mt-10 flex flex-col items-center gap-4 border-t border-outline-variant/10 pt-8">
-                  <p className="text-on-surface-variant text-xs">
-                    New operative?
-                    <a className="text-primary font-bold ml-1 hover:underline underline-offset-4" href="/signup">Create Account</a>
-                  </p>
-                </div>
               </div>
             </div>
           </div>
