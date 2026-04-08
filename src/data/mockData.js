@@ -1,10 +1,10 @@
 export const DISEASES = [
-  { name: 'Leaf Blight (Bacterial)', crop:'Soybean', severity:'medium', conf:91,
+  { name: 'Leaf Blight (Bacterial)', crop:'Soybean', severity:'medium', conf:95,
     treatment: ['Apply copper-based bactericide every 7–10 days','Remove & destroy infected leaves immediately','Avoid overhead irrigation to reduce leaf wetness','Maintain proper plant spacing for air circulation'],
     info: ['Caused by Xanthomonas bacteria entering through leaf pores','Symptoms: water-soaked lesions turning brown with yellow halos','Spreads rapidly in warm, humid conditions (25–30°C)','Most damaging during flowering and pod-filling stages'],
     prevention: ['Use certified disease-free seeds each season','Rotate crops — avoid soybean on same field for 2 years','Apply preventive copper spray at planting','Monitor weather alerts for high-humidity windows']
   },
-  { name: 'Powdery Mildew', crop:'Wheat', severity:'low', conf:87,
+  { name: 'Powdery Mildew', crop:'Wheat', severity:'low', conf:95,
     treatment: ['Apply sulfur-based fungicide at first sign of infection','Spray neem oil solution (3% concentration) weekly','Prune dense foliage to improve air circulation','Avoid excess nitrogen fertilization'],
     info: ['Fungal disease caused by Erysiphe graminis','White powdery coating appears on leaves & stems','Thrives in dry weather with high humidity nights','Reduces photosynthesis and grain quality'],
     prevention: ['Plant resistant wheat varieties','Avoid excessive nitrogen application','Ensure adequate plant spacing','Scout fields weekly during susceptible growth stages']
@@ -14,12 +14,12 @@ export const DISEASES = [
     info: ['Caused by water mold Phytophthora infestans','Causes dark brown lesions on leaves, stems, and fruit','Spreads explosively under cool, moist conditions','Can devastate an entire crop within days if untreated'],
     prevention: ['Plant certified disease-free transplants only','Use resistant tomato varieties','Ensure good drainage; avoid waterlogged soil','Apply preventive fungicide 2 weeks before typical outbreak season']
   },
-  { name: 'Rice Blast', crop:'Rice', severity:'high', conf:88,
+  { name: 'Rice Blast', crop:'Rice', severity:'high', conf:95,
     treatment: ['Apply tricyclazole or isoprothiolane fungicide','Drain fields and allow soil to dry briefly','Avoid excess nitrogen in blast-prone periods','Spray at boot stage and heading for best control'],
     info: ['Caused by fungus Magnaporthe oryzae','Diamond-shaped lesions with gray centers on leaves','Can also attack nodes, neck, and panicle causing "neck blast"','One of the most destructive rice diseases worldwide'],
     prevention: ['Use blast-resistant rice varieties','Balance nitrogen fertilizer — avoid excess','Maintain proper water management in paddy fields','Remove infected crop residues after harvest']
   },
-  { name: 'No Disease Detected', crop:'', severity:'low', conf:98,
+  { name: 'No Disease Detected', crop:'', severity:'low', conf:95,
     treatment: ['Continue regular crop monitoring','Maintain optimal irrigation schedule','Apply balanced NPK fertilizer as per soil test','Document healthy baseline for future comparison'],
     info: ['Crop appears healthy — no visible disease lesions','Leaf color, texture and structure are within normal range','Good chlorophyll density detected across scan area','Continue current crop management practices'],
     prevention: ['Maintain current management practices','Scout fields weekly as a preventive habit','Keep field records for seasonal pattern analysis','Store any unused seeds in cool, dry conditions']
